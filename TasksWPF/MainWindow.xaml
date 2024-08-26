@@ -1,0 +1,59 @@
+﻿<Window x:Class="TasksWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TasksWPF"
+        mc:Ignorable="d"
+        Title="Task Manager" Height="600" Width="400" Icon="Images/icon.png"
+        MinHeight="600" MinWidth="400" WindowStartupLocation="CenterScreen">
+
+	<!-- Conteneur principal de l'interface utilisateur, utilisant un StackPanel pour empiler les éléments verticalement -->
+	<StackPanel>
+		<!-- Titre de l'application affiché en haut de la fenêtre -->
+		<Label Margin="30 20 0 0" FontSize="20" FontWeight="SemiBold">Task Manager</Label>
+
+		<!-- Panneau pour l'entrée de nouvelle tâche avec une icône et une zone de texte -->
+		<DockPanel Margin="30 8 30 0" Background="#F2F2F2" Height="40">
+			<!-- Icône de plus (+) pour symboliser l'ajout d'une nouvelle tâche -->
+			<Image Source="Images/plus.png" Margin="10 0 8 0" DockPanel.Dock="Left"
+                   HorizontalAlignment="Right" Height="28" Width="23" />
+
+			<!-- Grille contenant la zone de texte pour entrer une nouvelle tâche -->
+			<Grid>
+				<!-- Texte indicatif dans la zone de texte (placeholder) -->
+				<Label IsHitTestVisible="False" x:Name="inputHint" FontSize="14"
+                       Foreground="#979797" VerticalAlignment="Top" Margin="0,6,0,0"
+                       Grid.RowSpan="2">Add task to Outgoing assignments</Label>
+				<!-- Zone de texte pour saisir une nouvelle tâche -->
+				<TextBox x:Name="inputBox" BorderThickness="0" TextChanged="inputBox_TextChanged"
+                         VerticalAlignment="Center" FontSize="14" Background="Transparent" />
+			</Grid>
+		</DockPanel>
+
+		<!-- Panneau pour afficher le nombre de tâches en cours (Outgoing assignments) -->
+		<DockPanel Margin="30 10 40 0">
+			<!-- Étiquette pour indiquer les tâches en cours -->
+			<Label FontSize="20">Outgoing assignments</Label>
+			<!-- Compteur pour afficher le nombre de tâches restantes -->
+			<Label x:Name="counter" FontSize="20" Foreground="#999999" HorizontalAlignment="Left">10</Label>
+		</DockPanel>
+
+		<!-- Conteneur déroulant pour afficher la liste des tâches -->
+		<ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" Height="400">
+			<!-- Panneau qui contiendra les tâches sous forme de StackPanel imbriqués -->
+			<StackPanel x:Name="mainPanel" Orientation="Vertical">
+				<!-- Exemple de tâche avec une radio button et des actions (commenté pour l'instant) -->
+				<!--
+                <StackPanel Margin="40 8 40 0">
+                    <RadioButton  VerticalContentAlignment="Center" FontSize="16">Lorem ipsum dolor sit amet, consectetur</RadioButton>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Margin="14 0 0 0" Foreground="#6A6A6A">19.06.2022</Label>
+                        <Button Foreground="#F23B3B" HorizontalAlignment="Right" Background="Transparent" BorderThickness="0">Delete</Button>
+                    </StackPanel>
+                </StackPanel>
+                -->
+			</StackPanel>
+		</ScrollViewer>
+	</StackPanel>
+</Window>
